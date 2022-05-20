@@ -1,0 +1,62 @@
+@use "../base/variables";
+@use "../base/mixins";
+
+.container {
+  &--todo {
+    grid-template-areas: "todo remove" "date done";
+  }
+
+  &.done {
+    background-color: var(--color-green);
+  }
+
+  .todo {
+    grid-area: todo;
+    align-self: flex-end;
+  }
+
+  .date {
+    grid-area: date;
+    align-self: flex-end;
+    font-size: 0.75rem;
+    color: var(--color-gray);
+  }
+
+  .btn {
+    &--remove {
+      grid-area: remove;
+      @include mixins.hover {
+        background-color: var(--color-red);
+      }
+      @include mixins.touch-screen {
+        &.touch {
+          background-color: var(--color-red);
+        }
+      }
+    }
+
+    &--done {
+      grid-area: done;
+      @include mixins.hover {
+        background-color: var(--color-green);
+      }
+      @include mixins.touch-screen {
+        &.touch {
+          background-color: var(--color-green);
+        }
+      }
+    }
+
+    &--undone {
+      grid-area: done;
+      @include mixins.hover {
+        background-color: var(--color-yellow);
+      }
+      @include mixins.touch-screen {
+        &.touch {
+          background-color: var(--color-yellow);
+        }
+      }
+    }
+  }
+}
