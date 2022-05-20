@@ -2,6 +2,20 @@
 @use "../base/mixins";
 
 .container {
+  .fold-button {
+    width: 100%;
+    height: 100%;
+  }
+  &.folded {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: baseline;
+    *:not(.todo) {
+      display: none;
+    }
+  }
   &--todo {
     grid-template-areas: "todo remove" "date done";
   }

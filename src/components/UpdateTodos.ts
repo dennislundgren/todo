@@ -1,7 +1,5 @@
 import { TodoModel } from "../models/TodoModel";
 
-let count = 0;
-
 export const NewTodo = (newTodo: TodoModel) => {
   const todos: string | null = localStorage.getItem("todos");
   let temp: TodoModel[] = [];
@@ -9,6 +7,29 @@ export const NewTodo = (newTodo: TodoModel) => {
     temp = JSON.parse(todos);
     temp.push(newTodo);
   } else temp.push(newTodo);
+  UpdateLocalStorage(temp);
+};
+
+export const RemoveTodo = (removeTodo: TodoModel) => {
+  const todos: string | null = localStorage.getItem("todos");
+
+  let temp: TodoModel[] = [];
+  if (todos) {
+    temp = JSON.parse(todos);
+    let i = temp.findIndex((e) => e.id === removeTodo.id);
+    temp.splice(i, 1);
+  } else temp.splice(1);
+  UpdateLocalStorage(temp);
+};
+
+export const UpdateStatus = (updateTodo: TodoModel, status: boolean) => {
+  const todos: string | null = localStorage.getItem("todos");
+  let temp: TodoModel[] = [];
+  if (todos) {
+    temp = JSON.parse(todos);
+    let i = temp.findIndex((e) => e.id === updateTodo.id);
+    temp[i].status = !status;
+  }
   UpdateLocalStorage(temp);
 };
 
@@ -21,8 +42,4 @@ export const GetTodos = () => {
 
 export const UpdateLocalStorage = (todos: TodoModel[]) => {
   localStorage.setItem("todos", JSON.stringify(todos));
-
-  console.log(count);
-
-  return count++;
 };

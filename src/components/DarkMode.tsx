@@ -1,12 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const DarkMode = () => {
-  const [state, setState] = useState(false);
+  const [state, setState] = useState<boolean>();
+
+  useEffect(() => {
+    let temp = localStorage.getItem("darkMode");
+    if (temp === "true") {
+      temp = JSON.parse(temp);
+      setState(true);
+    } else setState(false);
+  }, []);
 
   const handleClick = () => {
-    document.body.classList.toggle("darkmode");
     setState(!state);
+    localStorage.setItem("darkMode", state ? "false" : "true");
   };
+
+  if (state) {
+    document.body.classList.add("darkmode");
+  } else {
+    document.body.classList.remove("darkmode");
+  }
+
   return (
     <>
       <button

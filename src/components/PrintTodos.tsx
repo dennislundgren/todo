@@ -1,26 +1,19 @@
-import { useEffect, useState } from "react";
 import { TodoModel } from "../models/TodoModel";
 import { TodoCard } from "./TodoCard";
-import { GetTodos } from "./UpdateTodos";
 
-export const PrintTodos = () => {
-  const [todos, setTodos] = useState<TodoModel[]>([]);
+interface IProps {
+  todos: TodoModel[];
+  setTodos: React.Dispatch<React.SetStateAction<TodoModel[]>>;
+}
 
-  useEffect(() => {
-    setTodos(GetTodos);
-  }, []);
-
-  let html = todos.map((todo, i) => {
-    return (
-      <TodoCard
-        text={todo.text}
-        date={todo.date.toString()}
-        status={todo.status}
-        id={todo.id}
-        key={i}
-      />
-    );
+export const PrintTodos = (props: IProps) => {
+  let html = props.todos.map((todo, i) => {
+    return <TodoCard setTodos={props.setTodos} todo={todo} key={i} />;
   });
 
-  return <>{html}</>;
+  return (
+    <>
+      <div className="wrapper">{html}</div>
+    </>
+  );
 };

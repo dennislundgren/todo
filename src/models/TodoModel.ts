@@ -25,9 +25,9 @@ export class TodoDate {
     this.month = this.formatMonth(parseInt(month));
     this.date = date;
     this.day = this.formatDate(parseInt(day));
-    this.hour = hour;
-    this.minute = minute;
-    this.second = second;
+    this.hour = this.minimumIntegers(hour);
+    this.minute = this.minimumIntegers(minute);
+    this.second = this.minimumIntegers(second);
   }
   formatDate(e: number) {
     const weekday = [
@@ -57,5 +57,8 @@ export class TodoDate {
       "December",
     ];
     return month[e - 1];
+  }
+  minimumIntegers(e: string) {
+    return e.length > 1 ? e : "0" + e;
   }
 }

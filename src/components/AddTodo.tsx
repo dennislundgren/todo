@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { TodoDate, TodoModel } from "../models/TodoModel";
+import { PrintTodos } from "./PrintTodos";
 import { NewTodo } from "./UpdateTodos";
 
-export const AddTodo = () => {
+interface ISetTodos {
+  setTodos: React.Dispatch<React.SetStateAction<TodoModel[]>>;
+}
+
+export const AddTodo = ({ setTodos }: ISetTodos) => {
   const [todoText, setTodoText] = useState("");
+
   const addNewTodo = () => {
     const d = new Date();
     const newTodoDate = new TodoDate(
@@ -18,6 +24,7 @@ export const AddTodo = () => {
     const newTodo = new TodoModel(todoText, newTodoDate, false, Date.now());
     NewTodo(newTodo);
     setTodoText("");
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
 
   return (
@@ -46,6 +53,9 @@ export const AddTodo = () => {
           }}
           onTouchEnd={(e: React.TouchEvent<HTMLButtonElement>) => {
             (e.target as HTMLButtonElement).classList.remove("touch");
+          }}
+          onClick={() => {
+            if (todoText) addNewTodo();
           }}
         >
           Add
