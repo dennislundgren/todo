@@ -5,31 +5,31 @@
   grid-template-areas: "input add";
   margin-bottom: 2rem;
   position: relative;
-  &::after {
-    position: absolute;
-    transform: translateX(50%);
-    right: 50%;
-    bottom: -1.6rem;
-    content: "";
-    width: 80%;
-    height: 1px;
-    background-image: linear-gradient(
-      to right,
-      transparent,
-      lightgray,
-      lightgray,
-      lightgray,
-      lightgray,
-      lightgray,
-      lightgray,
-      lightgray,
-      lightgray,
-      lightgray,
-      lightgray,
-      transparent
-    );
-    border-radius: 999px;
-  }
+  // &::after {
+  //   position: absolute;
+  //   transform: translateX(50%);
+  //   right: 50%;
+  //   bottom: -1.6rem;
+  //   content: "";
+  //   width: 80%;
+  //   height: 1px;
+  //   background-image: linear-gradient(
+  //     to right,
+  //     transparent,
+  //     lightgray,
+  //     lightgray,
+  //     lightgray,
+  //     lightgray,
+  //     lightgray,
+  //     lightgray,
+  //     lightgray,
+  //     lightgray,
+  //     lightgray,
+  //     lightgray,
+  //     transparent
+  //   );
+  //   border-radius: 999px;
+  // }
   .input {
     &--add-todo {
       width: 100%;

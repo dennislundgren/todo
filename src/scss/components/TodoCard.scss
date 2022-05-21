@@ -6,7 +6,12 @@
     width: 100%;
     height: 100%;
   }
+  &.order-1 {
+    animation: hideToShow 1s ease-out;
+    order: -1;
+  }
   &.folded {
+    animation: folded 1s ease-out;
     width: fit-content;
     display: flex;
     justify-content: center;
@@ -27,6 +32,9 @@
   .todo {
     grid-area: todo;
     align-self: flex-end;
+    user-select: none;
+    cursor: default;
+    pointer-events: none;
   }
 
   .date {
@@ -34,6 +42,8 @@
     align-self: flex-end;
     font-size: 0.75rem;
     color: var(--color-gray);
+    user-select: none;
+    cursor: default;
   }
 
   .btn {
@@ -72,5 +82,32 @@
         }
       }
     }
+  }
+}
+
+@keyframes hideToShow {
+  from {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+    order: -1;
+  }
+  to {
+    opacity: 1;
+    order: -1;
+  }
+}
+
+@keyframes folded {
+  from {
+    opacity: 0;
+    order: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
   }
 }

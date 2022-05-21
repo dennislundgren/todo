@@ -5,6 +5,7 @@ import { PrintTodos } from "./components/PrintTodos";
 import { DarkMode } from "./components/DarkMode";
 import { TodoModel } from "./models/TodoModel";
 import { GetTodos } from "./components/UpdateTodos";
+import { TrashTodos } from "./components/TrashTodos";
 
 function App() {
   const [todos, setTodos] = useState<TodoModel[]>([]);
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <>
+      <TrashTodos setTodos={setTodos} />
       <DarkMode />
       <AddTodo setTodos={setTodos} />
       <PrintTodos todos={todos} setTodos={setTodos} />

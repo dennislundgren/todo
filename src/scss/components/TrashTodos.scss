@@ -1,0 +1,28 @@
+@use "../base/mixins";
+
+.btn--trashcan {
+  position: fixed;
+  top: 1rem;
+  right: 5rem;
+  bottom: auto;
+  width: fit-content;
+  height: fit-content;
+  @include mixins.hover {
+    background-color: var(--bg-invert);
+    color: var(--bg);
+  }
+  @include mixins.touch-screen {
+    bottom: 1rem;
+    top: auto;
+  }
+  @include mixins.half-screen {
+    bottom: 1rem;
+    top: auto;
+  }
+  @include mixins.touch-screen {
+    &.touch {
+      background-color: var(--bg-invert);
+      color: var(--bg);
+    }
+  }
+}

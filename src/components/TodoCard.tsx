@@ -9,10 +9,22 @@ interface IProps {
 
 export const TodoCard = (props: IProps) => {
   const [status, setStatus] = useState(props.todo.status);
-  const [folded, setFolded] = useState<boolean>(true);
+  const folded = true;
 
-  const changeFolded = () => {
-    setFolded(!folded);
+  const changeFolded = (e: React.MouseEvent<HTMLDivElement>) => {
+    let wrapper = document.querySelector(".wrapper") as HTMLDivElement;
+    wrapper.childNodes.forEach((child) => {
+      if (child !== e.target) {
+        (child as HTMLDivElement).classList.replace("order-1", "folded");
+      } else if (
+        child === e.target &&
+        (e.target as HTMLDivElement).classList.contains("folded")
+      ) {
+        (child as HTMLDivElement).classList.replace("folded", "order-1");
+      } else {
+        (child as HTMLDivElement).classList.replace("order-1", "folded");
+      }
+    });
   };
 
   const removeTodo = () => {
@@ -31,12 +43,12 @@ export const TodoCard = (props: IProps) => {
     <>
       <div
         className={`container container--todo ${status ? "done " : ""} ${
-          folded ? "folded" : ""
+          folded ? "folded" : "order-1"
         }`}
         onClick={(e: React.MouseEvent<HTMLDivElement>) => {
           e.preventDefault();
           if (!(e.target as HTMLDivElement).className.includes("btn")) {
-            changeFolded();
+            changeFolded(e);
           }
         }}
       >
