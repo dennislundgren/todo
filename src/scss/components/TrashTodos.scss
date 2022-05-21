@@ -1,28 +1,66 @@
 @use "../base/mixins";
 
 .btn--trashcan {
-  position: fixed;
-  top: 1rem;
-  right: 5rem;
-  bottom: auto;
+  box-shadow: 1.5px 2px 3px var(--box-shadow-dark);
+
+  width: fit-content;
+  height: fit-content;
+  @include mixins.hover {
+    background-color: var(--color-red);
+  }
+  @include mixins.active {
+    padding: var(--active-padding);
+    box-shadow: 1.5px 2px 0 var(--box-shadow-dark);
+  }
+  @include mixins.touch-screen {
+    &.touch {
+      padding: var(--active-padding);
+      background-color: var(--color-red);
+      box-shadow: 1.5px 2px 0 var(--box-shadow-dark);
+    }
+  }
+}
+
+.btn--undo {
+  box-shadow: 1.5px 2px 3px var(--box-shadow-dark);
+
   width: fit-content;
   height: fit-content;
   @include mixins.hover {
     background-color: var(--bg-invert);
     color: var(--bg);
   }
-  @include mixins.touch-screen {
-    bottom: 1rem;
-    top: auto;
-  }
-  @include mixins.half-screen {
-    bottom: 1rem;
-    top: auto;
+  @include mixins.active {
+    padding: var(--active-padding);
+    box-shadow: 1.5px 2px 0 var(--box-shadow-dark);
   }
   @include mixins.touch-screen {
     &.touch {
+      padding: var(--active-padding);
       background-color: var(--bg-invert);
       color: var(--bg);
+      box-shadow: 1.5px 2px 0 var(--box-shadow-dark);
+    }
+  }
+}
+
+.btn--check {
+  box-shadow: 1.5px 2px 3px var(--box-shadow-dark);
+
+  width: fit-content;
+  height: fit-content;
+  @include mixins.hover {
+    background-color: var(--color-green);
+  }
+  @include mixins.active {
+    box-shadow: 1.5px 2px 0 var(--box-shadow-dark);
+    padding: var(--active-padding);
+  }
+  @include mixins.touch-screen {
+    &.touch {
+      padding: var(--active-padding);
+      background-color: var(--color-green);
+      box-shadow: 1.5px 2px 0 var(--box-shadow-dark);
     }
   }
 }

@@ -18,6 +18,14 @@
   }
 }
 
+@mixin active {
+  @media (hover: hover) and (pointer: fine) {
+    &:active {
+      @content;
+    }
+  }
+}
+
 @mixin touch-screen {
   @media (pointer: coarse) {
     @content;

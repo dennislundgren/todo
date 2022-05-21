@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import "./scss/Main.scss";
 import { AddTodo } from "./components/AddTodo";
 import { PrintTodos } from "./components/PrintTodos";
-import { DarkMode } from "./components/DarkMode";
 import { TodoModel } from "./models/TodoModel";
 import { GetTodos } from "./components/UpdateTodos";
-import { TrashTodos } from "./components/TrashTodos";
+import { Menu } from "./components/Menu";
 
 function App() {
   const [todos, setTodos] = useState<TodoModel[]>([]);
+  const [showAddTodo, setShowAddTodo] = useState<boolean>(true);
 
   useEffect(() => {
     setTodos(GetTodos);
@@ -16,9 +16,12 @@ function App() {
 
   return (
     <>
-      <TrashTodos setTodos={setTodos} />
-      <DarkMode />
-      <AddTodo setTodos={setTodos} />
+      <Menu
+        setShowAddTodo={setShowAddTodo}
+        showAddTodo={showAddTodo}
+        setTodos={setTodos}
+      />
+      <AddTodo setTodos={setTodos} showAddTodo={showAddTodo} />
       <PrintTodos todos={todos} setTodos={setTodos} />
     </>
   );

@@ -9,7 +9,7 @@ interface IProps {
 
 export const TodoCard = (props: IProps) => {
   const [status, setStatus] = useState(props.todo.status);
-  const folded = true;
+  const [folded, setFolded] = useState(true);
 
   const changeFolded = (e: React.MouseEvent<HTMLDivElement>) => {
     let wrapper = document.querySelector(".wrapper") as HTMLDivElement;
@@ -21,7 +21,9 @@ export const TodoCard = (props: IProps) => {
         (e.target as HTMLDivElement).classList.contains("folded")
       ) {
         (child as HTMLDivElement).classList.replace("folded", "order-1");
+        setFolded(false);
       } else {
+        setFolded(true);
         (child as HTMLDivElement).classList.replace("order-1", "folded");
       }
     });
@@ -35,6 +37,7 @@ export const TodoCard = (props: IProps) => {
   };
 
   const changeStatus = () => {
+    setFolded(false);
     setStatus(!status);
     UpdateStatus(props.todo, status);
   };
@@ -42,7 +45,7 @@ export const TodoCard = (props: IProps) => {
   return (
     <>
       <div
-        className={`container container--todo ${status ? "done " : ""} ${
+        className={`container container--todo ${status ? "done" : ""} ${
           folded ? "folded" : "order-1"
         }`}
         onClick={(e: React.MouseEvent<HTMLDivElement>) => {
@@ -52,6 +55,11 @@ export const TodoCard = (props: IProps) => {
           }
         }}
       >
+        {/* {folded ? (
+          <p className="todo">{props.todo.text}</p>
+        ) : (
+          <input value={props.todo.text} className="todo-input" />
+        )} */}
         <p className="todo">{props.todo.text}</p>
         <p className="date">
           {props.todo.date.day} - {props.todo.date.month} {props.todo.date.date}

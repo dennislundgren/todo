@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { TodoDate, TodoModel } from "../models/TodoModel";
-import { PrintTodos } from "./PrintTodos";
 import { NewTodo } from "./UpdateTodos";
 
 interface ISetTodos {
+  showAddTodo: boolean;
   setTodos: React.Dispatch<React.SetStateAction<TodoModel[]>>;
 }
 
-export const AddTodo = ({ setTodos }: ISetTodos) => {
+export const AddTodo = ({ setTodos, showAddTodo }: ISetTodos) => {
   const [todoText, setTodoText] = useState("");
 
   const addNewTodo = () => {
@@ -29,7 +29,11 @@ export const AddTodo = ({ setTodos }: ISetTodos) => {
 
   return (
     <>
-      <div className="container container--add-todo">
+      <div
+        className={`container container--add-todo ${
+          showAddTodo ? "" : "hidden"
+        }`}
+      >
         <input
           className="input input--add-todo"
           type="text"

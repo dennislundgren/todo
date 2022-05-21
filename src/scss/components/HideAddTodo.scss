@@ -1,6 +1,6 @@
 @use "../base/mixins";
 
-.btn--darkmode {
+.btn--hide-add-todo {
   box-shadow: 1.5px 2px 3px var(--box-shadow-dark);
 
   width: fit-content;
@@ -16,9 +16,9 @@
   @include mixins.touch-screen {
     &.touch {
       padding: var(--active-padding);
-      box-shadow: 1.5px 2px 0 var(--box-shadow-dark);
       background-color: var(--bg-invert);
       color: var(--bg);
+      box-shadow: 1.5px 2px 0 var(--box-shadow-dark);
     }
   }
 }

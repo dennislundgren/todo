@@ -9,6 +9,9 @@
   --color-text: hsl(30, 5%, 10%);
 
   --box-shadow: rgba(0, 0, 0, 0.2);
+  --box-shadow-dark: rgba(0, 0, 0, 0.5);
+
+  --active-padding: 0.9rem;
 }
 
 .darkmode {
@@ -22,6 +25,7 @@
   --color-text: hsl(30, 5%, 80%);
 
   --box-shadow: rgba(0, 0, 0, 1);
+  --box-shadow-dark: rgba(0, 0, 0, 1);
 }
 
 $gap: 1rem;
