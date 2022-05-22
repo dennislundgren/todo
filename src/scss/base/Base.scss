@@ -84,7 +84,7 @@ body {
   display: flex;
   gap: 1rem;
   align-items: flex-end;
-  animation: slideOut 0.2s ease-in-out;
+  animation: slideOut 0.15s ease-out;
 }
 
 [class*="fa"] {

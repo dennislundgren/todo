@@ -10,21 +10,20 @@ export const TrashTodos = (props: ITodos) => {
   const [state, setState] = useState(false);
 
   const showOptions = () => {
-    console.log(state);
-
     if (state) {
       (
         document.querySelector(".child-menu") as HTMLDivElement
       ).classList.replace("child-menu", "slide-out");
       setTimeout(() => {
         setState(!state);
-      }, 190);
+      }, 145);
     } else setState(!state);
   };
 
   const trashTodos = () => {
     props.setTodos([]);
     UpdateLocalStorage([]);
+    showOptions();
   };
 
   return (

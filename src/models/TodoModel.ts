@@ -31,15 +31,15 @@ export class TodoDate {
   }
   formatDate(e: number) {
     const weekday = [
+      "Sunday",
       "Monday",
       "Tuesday",
       "Wednesday",
       "Thursday",
       "Friday",
       "Saturday",
-      "Sunday",
     ];
-    return weekday[e - 1];
+    return weekday[e];
   }
   formatMonth(e: number) {
     const month = [
@@ -56,7 +56,7 @@ export class TodoDate {
       "November",
       "December",
     ];
-    return month[e - 1];
+    return month[e];
   }
   minimumIntegers(e: string) {
     return e.length > 1 ? e : "0" + e;

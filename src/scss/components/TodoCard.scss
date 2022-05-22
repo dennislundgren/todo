@@ -2,6 +2,7 @@
 @use "../base/mixins";
 
 .container {
+  -webkit-tap-highlight-color: transparent;
   .fold-button {
     width: 100%;
     height: 100%;
@@ -11,6 +12,7 @@
     order: -1;
   }
   &.folded {
+    cursor: pointer;
     animation: folded 1s ease-out;
     width: fit-content;
     display: flex;
@@ -19,6 +21,17 @@
     align-self: baseline;
     *:not(.todo) {
       display: none;
+    }
+    @include mixins.hover {
+      background-color: var(--bg-invert);
+      color: var(--bg);
+    }
+    @include mixins.touch-screen {
+      &.touch {
+        background-color: var(--bg-invert);
+        color: var(--bg);
+        transform: scale(0.5);
+      }
     }
   }
   &--todo {
